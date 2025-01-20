@@ -1,6 +1,12 @@
 outdir: results/RBP
 rRNA_fasta: rRNA.fa
 star_index: /home/kenchen/db/star/GRCh38-gencode.STAR_overhang100
+genome_fa: /home/kenchen/db/gencode/GRCh38/GRCh38.primary_assembly.genome.fa
+chromsize: /home/kenchen/db/gencode/GRCh38/GRCh38.primary_assembly.genome.fa.chromsize
+homer:
+  extsize: 20
+  background: /home/kenchen/db/gencode/GRCh38/v46/regions/gencode.v46.gene.bed
+
 
 data:
   path: /data/user/kenchen/projects/ARTR-seq-custom/data/raw

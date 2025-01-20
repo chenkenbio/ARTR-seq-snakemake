@@ -37,7 +37,11 @@ rule all:
         expand(
             outdir / "macs3_peaks/{sample}_peaks.narrowPeak",
             sample=PAIRED_SAMPLES.keys()
-        )
+        ),
+        expand(
+            outdir / "homer_motifs/{sample}/homerResults.html",
+            sample=PAIRED_SAMPLES.keys()
+        ),
 
 
 ## 
@@ -373,5 +377,37 @@ rule macs3_peakcalling:
         awk -v OFS="\\t" '{{$6 = "-"; print $0}}' {outdir}/macs3_peaks/{wildcards.sample}_rev_peaks.narrowPeak >> {output}.tmp && \
         sort -k1,1 -k2,2n -k3,3n {output}.tmp  > {output} && rm -f {output}.tmp && \
         rm -f {outdir}/macs3_peaks/{wildcards.sample}_fwd_peaks.narrowPeak {outdir}/macs3_peaks/{wildcards.sample}_rev_peaks.narrowPeak
+        """
+
+rule homer_find_motifs:
+    input:
+        bed = outdir / "macs3_peaks/{sample}_peaks.narrowPeak"
+    params:
+        # homer = config.get("homer", "findMotifsGenome.pl"),
+        homer = "findMotifsGenome.pl",
+        genome = config.get("genome_fa", "hg38"),
+        chromsize = config.get("chromsize"),
+        extsize = config.get("homer").get("extsize", 20),
+        #bg = f"-bg {config['homer']['background']}" if "background" in config["homer"] else ""
+        bg = f"-bg {config['homer']['background']}" 
+    output:
+        ext_bed = outdir / "homer_motifs/{sample}_peaks.extended.bed",
+        html = outdir / "homer_motifs/{sample}/homerResults.html"
+    log:
+        outdir / "homer_motifs/{sample}.homer.log"
+    threads:
+        8
+    shell:
+        """
+        bedtools slop -i {input.bed} -g {params.chromsize} -b {params.extsize} > {output.ext_bed} && \
+        {params.homer} \
+            {output.ext_bed} \
+            {params.genome} \
+            {outdir}/homer_motifs/{wildcards.sample} \
+            -rna \
+            -S 10 \
+            -len 5,6,7,8,9 \
+            -p {threads} \
+            {params.bg} &> {log}
         """
 
