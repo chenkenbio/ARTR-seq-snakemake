@@ -299,14 +299,15 @@ rule split_strand:
         rev = outdir / "alignments_star/{sample}/{sample}.dedup.rev.bam",
         rev_bai = outdir / "alignments_star/{sample}/{sample}.dedup.rev.bam.bai"
     params:
-        strandness = lambda wildcards: SAMPLE_DATA[wildcards.sample].get("strandness") # F/R/FR/RF
+        strandness = lambda wildcards: SAMPLE_DATA[wildcards.sample].get("strandness"), # F/R/FR/RF
+        bin = os.path.expanduser(config["split_bam_py"])
     log:
         outdir / "alignments_star/{sample}/{sample}.dedup.split_strand.log"
     threads:
         8
     shell:
         """
-        python ./split_bam_by_strand.py \
+        python {params.bin} \
             -l {params.strandness} \
             -t {threads} \
             {input} -o {outdir}/alignments_star/{wildcards.sample}/{wildcards.sample}.dedup

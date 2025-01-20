@@ -4,6 +4,7 @@ rRNA_fasta: rRNA.fa # or directly give the rRNA STAR index under the key rRNA_in
 star_index: /home/kenchen/db/star/GRCh38-gencode.STAR_overhang100
 genome_fa: /home/kenchen/db/gencode/GRCh38/GRCh38.primary_assembly.genome.fa
 chromsize: /home/kenchen/db/gencode/GRCh38/GRCh38.primary_assembly.genome.fa.chromsize # format: [chrom]\t[size], e.g, https://hgdownload.cse.ucsc.edu/goldenpath/hg38/bigZips/hg38.chrom.sizes
+split_bam_py: /home/kenchen/Documents/ARTR-seq-snakemake/demo/split_bam_by_strand.py
 homer:
   extsize: 20
   background: /home/kenchen/db/gencode/GRCh38/v46/regions/gencode.v46.gene.bed # optional
