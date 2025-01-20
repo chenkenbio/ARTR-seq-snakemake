@@ -1,0 +1,131 @@
+outdir: results/RBP
+rRNA_fasta: rRNA.fa
+star_index: /home/kenchen/db/star/GRCh38-gencode.STAR_overhang100
+
+data:
+  path: /data/user/kenchen/projects/ARTR-seq-custom/data/raw
+  samples: 
+    A.HepG2.40k.RBFOX2.rep1:
+      R1: /data/user/kenchen/data/GEO/GSE226161_ARTR-seq_YuXiao/SRR23628463.fastq.gz
+      amount: 40k
+      cell: HepG2
+      condition: RBFOX2
+      group: A
+      input:
+        - A.HepG2.40k.Input.rep2
+        - A.HepG2.40k.Input.rep1
+        - A.HepG2.40k.Input.rep3
+      rep: rep1
+      strandness: F
+    A.HepG2.40k.Input.rep1:
+      R1: /data/user/kenchen/data/GEO/GSE226161_ARTR-seq_YuXiao/SRR23628470.fastq.gz
+      amount: 40k
+      cell: HepG2
+      condition: Input
+      group: A
+      input: null
+      rep: rep1
+      strandness: F
+    A.HepG2.40k.Input.rep2:
+      R1: /data/user/kenchen/data/GEO/GSE226161_ARTR-seq_YuXiao/SRR23628469.fastq.gz
+      amount: 40k
+      cell: HepG2
+      condition: Input
+      group: A
+      input: null
+      rep: rep2
+      strandness: F
+    A.HepG2.40k.Input.rep3:
+      R1: /data/user/kenchen/data/GEO/GSE226161_ARTR-seq_YuXiao/SRR23628468.fastq.gz
+      amount: 40k
+      cell: HepG2
+      condition: Input
+      group: A
+      input: null
+      rep: rep3
+      strandness: 
+      strandness: F
+    NO_F1_Don_HeLa_rep1:
+      R1: NO_F1_Don_HeLa_rep1-R1-P16B19.fq.gz
+      R2: NO_F1_Don_HeLa_rep1-R2-P16B19.fq.gz
+      cell: HeLa
+      concentration: F1
+      rbp: 'NO'
+      rep: rep1
+      strandness: FR
+    NO_F1_Don_HeLa_rep2:
+      R1: NO_F1_Don_HeLa_rep2-R1-P16B20.fq.gz
+      R2: NO_F1_Don_HeLa_rep2-R2-P16B20.fq.gz
+      cell: HeLa
+      concentration: F1
+      rbp: 'NO'
+      rep: rep2
+      strandness: FR
+    NO_F1_Don_HeLa_rep3:
+      R1: NO_F1_Don_HeLa_rep3-R1-P16B21.fq.gz
+      R2: NO_F1_Don_HeLa_rep3-R2-P16B21.fq.gz
+      cell: HeLa
+      concentration: F1
+      rbp: 'NO'
+      rep: rep3
+      strandness: FR
+    NO_F1_Don_HepG2_rep1:
+      R1: NO_F1_Don_HepG2_rep1-R1-P16B1.fq.gz
+      R2: NO_F1_Don_HepG2_rep1-R2-P16B1.fq.gz
+      cell: HepG2
+      concentration: F1
+      rbp: 'NO'
+      rep: rep1
+      strandness: FR
+    NO_F1_Don_HepG2_rep2:
+      R1: NO_F1_Don_HepG2_rep2-R1-P16B2.fq.gz
+      R2: NO_F1_Don_HepG2_rep2-R2-P16B2.fq.gz
+      cell: HepG2
+      concentration: F1
+      rbp: 'NO'
+      rep: rep2
+      strandness: FR
+    NO_F1_Don_HepG2_rep3:
+      R1: NO_F1_Don_HepG2_rep3-R1-P16B3.fq.gz
+      R2: NO_F1_Don_HepG2_rep3-R2-P16B3.fq.gz
+      cell: HepG2
+      concentration: F1
+      rbp: 'NO'
+      rep: rep3
+      strandness: FR
+    RBFOX2_F1_Don_HepG2_rep1:
+      R1: RBFOX2_F1_Don_HepG2_rep1-R1-P16B4.fq.gz
+      R2: RBFOX2_F1_Don_HepG2_rep1-R2-P16B4.fq.gz
+      cell: HepG2
+      concentration: F1
+      rbp: RBFOX2
+      rep: rep1
+      strandness: FR
+      input:
+        - NO_F1_Don_HepG2_rep1
+        - NO_F1_Don_HepG2_rep2
+        - NO_F1_Don_HepG2_rep3
+    RBFOX2_F1_Don_HepG2_rep2:
+      R1: RBFOX2_F1_Don_HepG2_rep2-R1-P16B5.fq.gz
+      R2: RBFOX2_F1_Don_HepG2_rep2-R2-P16B5.fq.gz
+      cell: HepG2
+      concentration: F1
+      rbp: RBFOX2
+      rep: rep2
+      strandness: FR
+      input:
+        - NO_F1_Don_HepG2_rep1
+        - NO_F1_Don_HepG2_rep2
+        - NO_F1_Don_HepG2_rep3
+    RBFOX2_F1_Don_HepG2_rep3:
+      R1: RBFOX2_F1_Don_HepG2_rep3-R1-P16B6.fq.gz
+      R2: RBFOX2_F1_Don_HepG2_rep3-R2-P16B6.fq.gz
+      cell: HepG2
+      concentration: F1
+      rbp: RBFOX2
+      rep: rep3
+      strandness: FR
+      input:
+        - NO_F1_Don_HepG2_rep1
+        - NO_F1_Don_HepG2_rep2
+        - NO_F1_Don_HepG2_rep3
